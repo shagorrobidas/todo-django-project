@@ -9,7 +9,7 @@ from .forms import TaskForm
 @login_required
 def task_list(request):
     tasks = Task.objects.filter(user=request.user).order_by('-created_at')
-    return render(request, 'tasks/task_list.html', {'tasks': tasks})
+    return render(request, 'task_list.html', {'tasks': tasks})
 
 
 @login_required
@@ -23,7 +23,7 @@ def task_add(request):
             return redirect('task_list')
     else:
         form = TaskForm()
-    return render(request, 'tasks/task_add.html', {'form': form})
+    return render(request, 'task_add.html', {'form': form})
 
 
 @login_required
